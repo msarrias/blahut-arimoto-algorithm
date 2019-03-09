@@ -1,1 +1,2 @@
-# statistical-information-theory
+## Stockholm University - SU
+# Statistical Information Theory 
