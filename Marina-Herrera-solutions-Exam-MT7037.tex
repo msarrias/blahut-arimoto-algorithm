@@ -8,6 +8,10 @@
 \newcommand\pN{\mathcal{N}}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{tikz}
+\def\firstcircle{(90:1.75cm) circle (2.5cm)}
+\def\secondcircle{(210:1.75cm) circle (2.5cm)}
+\def\thirdcircle{(330:1.75cm) circle (2.5cm)}
 \newcommand{\Lagr}{L}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \makeatletter
@@ -409,7 +413,7 @@ p(x,z|y) & = \frac{p(x,y,z)}{p(y)}\\
  
 \pagebreak
 Then the correlation coefficient $\rho_{xz}$ is obtained as:
-\begin{equation*}\label{eq4}
+\begin{equation*}
 \begin{split}
 \rho_{xz} & = \frac{E[XZ]-E[X]E[Z]}{\sigma_{x}\sigma_{z}}\\
 		  & =\frac{E[XZ]}{\sigma_{x}\sigma_{z}}\\
@@ -441,74 +445,163 @@ Phys. Rev. Lett., 85, 461, 2000, in terms of mutual information and Shannon
 entropy.
 \end{tcolorbox}
 
-The transfer entropy ${T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t)$ from the source variable $\mathbb{Y}$ to the target variable $\mathbb{X}$ is the information shared between $\mathbb{Y}$'s past and $\mathbb{X}$'s present given the knowledge of $\mathbb{X}$'s past. it measures how much information the source variable provides about state transitions in the target variable. \\
-
-The random time series processes $\mathbb{X}$ and $\mathbb{Y}$ are a join of sequential processes that evolve over time $t$, with a history length of $k$ for the target variable and $j$ for the source, in which most of the cases $l=1$ or $l=k$ i.e $\mathbb {X}^{(k)}_{t} = (X_{t}, X_{t-1},...,X_{t-k+1})$ and $\mathbb {Y}^{(l)}_{t} = (Y_{t}, Y_{t-1},...,Y_{t-l+1})$.\\
-
-The state of the process $Y$ depends only on its own past and do not depend in any matter on $X$, i.e there is a zero information transfer between $X$ $\rightarrow$ $Y$. Unlike $Y$, the current state of $X$ do not depends on its own past if not it depends probabilistically on the state of $Y$ at the previous time step. i.e $X_{t} = Y_{t-1}$.
-
+The random time series processes $\mathbb {X}^{(k)}_{t}$ and $\mathbb {Y}^{(l)}_{t}$ are a join of sequential processes that evolve over time $t$, with a history length (lags/time steps) of $k$ for the target variable and $j$ for the source variable, in which most of the cases $l=1$ or $l=k$.
 \begin{equation*}
 \begin{split}
-{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t) &= \sum_{X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}} p(x_{t}, {\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)}) \log_{2} \frac{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)})}{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)})}
+\mathbb {X}^{(k)}_{t} &= (X_{t}, X_{t-1},...,X_{t-k+1})\\
+\mathbb {Y}^{(l)}_{t} &= (Y_{t}, Y_{t-1},...,Y_{t-l+1})
 \end{split}
+\end{equation*}
+The transfer entropy ${T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t)$ is defined as the difference between the entropy of the state of $X_{t}$ conditioned on its own past ${\mathbb{X}}^{k}_{t-1}$ and its entropy conditioned in addition to the past of ${\mathbb{Y}}^{l}_{t-1}$. It therefore measures how much information the source variable ${\mathbb{Y}}^{l}_{t-1}$ provides about the state transitions in the target variable ${\mathbb{X}}^{k}_{t-1}$. It measures the deviation in bits from the Markov property of conditional independence. 
+
+\begin{equation*}
+{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t) = H(X_{t}|{\mathbb{X}}^{k}_{t-1}) - H(X_{t}|{\mathbb{X}}^{k}_{t-1},{\mathbb{Y}}^{l}_{t-1})
 \end{equation*}
 
 
+It can also be formulated as the conditional mutual information: \\
+$I(X_{t}, {\mathbb{Y}_{t-1}}^{(l)}|{\mathbb{X}_{t-1}}^{(k)})$ which is the reduction of uncertainty by the process ${\mathbb{Y}_{t-1}}^{(l)}$ in the state $X_{t}$ conditioned to its own past. i.e, how much information the source variable ${\mathbb{X}_{t-1}}^{(k)}$ adds in predicting the next state of the target variable. The current state of $X_{t}$ will depend probabilistically on the state of $Y_{t-1}$ at the previous time step $t-1$.  \\
 
-\begin{equation*}
-\begin{split}
- I(X_{t}, {\mathbb{Y}_{t-1}}^{(L)}|{\mathbb{X}_{t-1}}^{(k)}) &= \sum_{X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}} \mathbb{E}_{p({X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}})} \log\frac{p(x_{t}, {\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)}) p({\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}\\
- & = H(X_{t}|{\mathbb{X}_{t-1}}^{(k)}) - H(X_{t}| {\mathbb{Y}_{t-1}}^{(L)}, {\mathbb{X}_{t-1}}^{(k)})
-\end{split}
-\end{equation*}
-
-\begin{equation*}
-\begin{split}
-{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t)  = I(X_{t}, {\mathbb{Y}_{t-1}}^{(l)}|{\mathbb{X}_{t-1}}^{(k)}) 
-\end{split}
-\end{equation*}
-
-${T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t)$ measures the deviation from the Markov property which equals the conditional mutual information.
 \begin{tcolorbox}
 \textbf{(b)}
 Why is mutual information not a good measure for an information transfer?
 \end{tcolorbox}
 
+Mutual information neither contains dynamical nor directional information. Directional in the sense that for: $I(X_{t}:Y_{t})$ the exchange between the two systems is a symmetric measure of statically shared information. i.e, we do not know if there is a direction. We will only know that if the mutual information is greater than zero the two variables are not independent. While in a directional system there is only information transfer in one direction $Y \rightarrow X$ as the information transfer in $X \rightarrow Y$ will be zero. \\ 
+
+Dynamical, in the sense that mutual information is a property of static probability distributions and a dynamic system is described as the evolution of a set of state variables, i.e a system that evolves over time. Conditioning on the past can make a measure to be directional, and dynamic, which is the case of the transfer entropy. The Cellular Automata is a good example of a directional and dynamic system.\\
+
+%even though the introduction of a time lag in one of the variables such that $I(X_{t}:Y_{t-s})$ can add directional information to the mutual information, although it still fails to take into account shared history between the processes.\\
+
+%Transfer entropy takes the mutual information properties and in addition takes the dynamics of information transport into account, where we will be able to quantify the exchange of information between two systems separetly and on both directions, it could also be conditioned to common input signals. \\
+	
 \begin{tcolorbox}
 \textbf{(c)}
 Does Schreiber’s definition of transfer entropy coincide with the
 definition of mutual information?
 \end{tcolorbox}
+\begin{proofw}
 
+
+Yes, it coincides with the definition of conditional mutual information, it can be proved as following:
+
+\begin{equation}\label{transfentropy}
+\begin{split}
+{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t) &= \sum_{X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}} p(x_{t}, {\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)}) \log \frac{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)})}{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)})}
+\end{split}
+\end{equation}
+Where: 
+\begin{equation}\label{proofcp}
+\begin{split}
+p(x_{t}|{\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)}) &= \frac{p(x_{t},{\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)}) }{p({\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)})}\\
+&= \frac{p(x_{t},{\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)}) p({\mathbb{x}_{t-1}}^{(k)})} {p({\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)})}\\
+&=\frac{p(x_{t},{\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}{\frac{p({\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)})}{p({\mathbb{x}_{t-1}}^{(k)})}}\\
+&= \frac{p(x_{t},{\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})} {p({\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}\\
+\end{split}
+\end{equation}
+
+Plugging the results of eq.($\ref{proofcp}$) into eq.($\ref{transfentropy}$) we obtain:
+\begin{equation*}
+\begin{split}
+{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t) &= \sum_{X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}} p(x_{t}, {\mathbb{x}_{t-1}}^{(k)},{\mathbb{y}_{t-1}}^{(l)}) \log \frac{p(x_{t},{\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)})p({\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}
+\end{split}
+\end{equation*}
+And knowing that the mutual information $I(X_{t}, {\mathbb{Y}_{t-1}}^{(L)}|{\mathbb{X}_{t-1}}^{(k)})$ is:
+
+\begin{equation*}\label{mutual_information}
+\begin{split}
+I(X_{t}, {\mathbb{Y}_{t-1}}^{(L)}|{\mathbb{X}_{t-1}}^{(k)}) &= \sum_{X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}} p({X_{t}, {\mathbb{X}_{t-1}}^{(k)},{\mathbb{Y}_{t-1}}^{(l)}}) \log\frac{p(x_{t}, {\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}{p(x_{t}|{\mathbb{x}_{t-1}}^{(k)}) p({\mathbb{y}_{t-1}}^{(l)}|{\mathbb{x}_{t-1}}^{(k)})}\\
+\end{split}
+\end{equation*}
+
+We can now verify that:
+\begin{equation*}
+\begin{split}
+{T}^{(k,l)}_{\mathbb{Y}\rightarrow \mathbb{X}}(t)  = I(X_{t}, {\mathbb{Y}_{t-1}}^{(l)}|{\mathbb{X}_{t-1}}^{(k)}) 
+\end{split}
+\end{equation*}
+\end{proofw}
 \begin{tcolorbox}
 \textbf{(d)}
 What is the meaning of local transfer entropy?
 \end{tcolorbox}
+
+The local transfer entropy describes the information contained in the source variable $y_{t-1}$ about the next state $x_{t}$ at a time $t$ and that is not contained in ${x}^{(k)}_{t-1}$ , as this is a local measure it is defined at each time $t$. The average over all the points will be the transfer entropy of the system. \\
+
+The local transfer entropy gives information about the dynamics (transition probabilities) of information transfer in time. Insights that the transfer entropy can not access, as it is an average. It can also be defined as a local conditional mutual information: $i( {\mathbb{y}_{t-1}}^{(l)};x_{t}|{\mathbb{x}_{t-1}}^{(k)})$.\\
 
 \begin{tcolorbox}
 \textbf{(e)}
 Is the Granger causality concept the same as transfer entropy?
 Explain possible similarities and differences.
 \end{tcolorbox}
+According to the paper by Barnett et al., the concepts od Granger causality and transfer entropy are entirely equivalent for Gaussian processes, up to certain conditions and under a parametric formulation. It is important to stress in the fact that they will only measure the same thing for Gaussian processes. \\
+
+Both concepts numerical equivalence will depend on the method used to estimate the transfer entropy in the sample. i.e, if conditional entropies are estimated directly from sample probability distributions, results will vary,therefore the Granger causality can be considered after the introduction of constraints in the data, i.e Granger parametric formulation.  \\
+
+Some of this equivalence formulations are:
+Granger causality and transfer entropy for discrete variables with jointly multivariate Gaussian distribution are equivalent up to a factor of two,this as the Granger transfer entropy general formulation only deals with univariate variables, so this is just the result of the formulation extension by adding an extra conditioning factor. On the other hand, for discrete random variables with jointly multivariate Weinman exponential distribution, the Granger causality and transfer entropy will be the same up to a factor of 1. And for discrete random variables with jointly multivariate log-normal distribution, the Granger causality and transfer entropy will also be the same, up to a factor of $\frac{1}{2}$\\
+
+The possible advantages that either measure could have are strongly related with the data and its underlying stochastic generative process. For instance, For highly non-linear data where there is too much variability, this can lead to invalidate the residuals-regressors un-correlation assumption (eq.(5) in the paper), same for a given case in which the regressors used for modeling do not have sufficient explanatory power, all of these could lead to compromise the statistical inference. So, indifferently that our data satisfies, the conditions for formulation a linear model this does not mean that the results will be significant, and that the parsimonious principal will hold, and therefore there will be occasions in which it will be better a non parametric  method (TE). \\
+
 
 \begin{tcolorbox}
 \textbf{(f)}
-To complete this part you need to read the paper by Lizier and Prokopenko in Eur. Phys. J. B 73, 605-615, 2010.
+To complete this part you need to read the paper by Lizier and Prokopenko in Eur. Phys. J. B 73, 605-615, 2010.\\
 $i)$  Does information transfer have the same meaning as information flow in the opinion of the authors of the paper? Explain possible similarities and differences.\\
 $ii)$ What is the difference between interventional and standard
-conditional probabilities?
+conditional probabilities?\\
 $iii)$ Explain the difference between local transfer entropy and local information flow.\\
 $iv)$What are the advantages of the definition of local information flow according to the authors of the paper.\\
 \end{tcolorbox}
+$(i)$\\
 
+The thesis of the paper is that both concepts, are different, and should be considered separately.\\
+
+The information flow is principally related to identifying up to what extent the source variable can influence on predicting the next state of the target variable, while the predictive information transfer refers to how the state of the source variable helps on predicting the next state of the target variable. i.e, in which amount the source variable contributes to the prediction. \\
+
+Both measures are also done differently, information transfer is quantified by transfer entropy, which only takes into account local values (observed conditional correlations), while information flow is quantified by introducing certain intervention or deviation, so we can actually learn in which extent the source variable influences the state of the target variable.\\
+
+The argument for defining local information transfer and local information flow is the same however the meaning in local information flow is different. Also, unlike information transfer, information flow is not an average of local values.\\
+
+%Both measures can actually be complementary, including the conditions under which they converge.
+
+%The predictive information transfer can be used to describe the emergent computation on the target variable i.e, this information is being transferred to the computation taking place at the target variable. \\
+
+%Information transfer refers to the amount of information the source variable contributes to the next state of the target variable, i.e knowing the state of the source variable how much will this help in predicting the next state of the target variable.\\
+
+%On the other hand, information flow refers to the direct influence that the source variable might have on predicting the next state of the target variable. i.e, if we change the status of the source variable, how much would this affect in predicting the next status of the target variable. Therefore in order to determine this influence, it is necessary to introduce certain intervention or deviation, so we can actually learn in which extent the source variable influences the state of the target variable. \\
+
+$(ii)$\\
+
+Following the paper's definition, considering two variables $s$ and $a$ an interventional conditional probability $p(a|\tilde{s})$ considers the distribution of $a$ resulting from imposing the value of $\tilde{s}$, while its correlation alters $p(a|s)$ generally by $p(a)$, meaning that imposing a value on $s$, has no effect. I will illustrate this with a simple example. Lets say we have a disease  $s$ ("a weird disease"), which is correlated with $a$ ("shortness of breath"), in the sense that $s$ can cause $a$.  If we ask about the probability of suffering from shortness of breath given that we intervened having this weird disease. The intervention wont have any effect on the relevant causal link, so it will be the same as the conditional probability: 
+\begin{equation*}
+p(a|\tilde{s})  = P(a|s)
+\end{equation*}
+Now, we also know that, $s$ and $a$ are solely caused by $g$ ("certain bacterial infection"). If the system of $s$ is intervened to set the value of this variable, so the question will be now: what is the probability of suffering from shortness of breath if I eliminate having the weird disease using a magic potion? such that:
+\begin{equation*}
+P(a|\tilde{s})  = P(a)
+\end{equation*}
+This will be the same as the prior probability of suffering from shortness of breath. This, as having the weird disease has been disconnected from suffering from shortness of breath, thus it does not provide any information about it.\\
+
+%information flow is measured via  interventional and standard conditional probabilities.
+ $(iii)$\\
+ 
+The local information flow is defined in a similar manner as the local transfer entropy. However the local information flow has a different meaning. Let's say that given the observation $(y, x, \boldsymbol{s})$, we study the local cause effect of $y$ on $x$ given the imposition $\tilde{s}$ of the same observation. The local information flow will finally be the average over the product of interventional conditional probabilities $p(s) p(y|\boldsymbol{\tilde{s}}) p(x|\tilde{y},\boldsymbol{\tilde{s}})$.\\
+
+As there is a possibility that not all of the tuples $\{y,x,s\}$ will actually be observed, we still need to take into account all the unobserved tuples as they still have a valuable weight. Therefore we should not rely only in the observed values, we should take into account all possible combinations so we can understand the causation in our system.\\
+
+In summary, the local information flow does not make reference to a certain observation given a moment in time  $t$, if not, it is related to how the general configuration of $(y, x, \boldsymbol{s})$ is attributed to the given observation at the given time step.\\
+
+$(iv)$\\
+
+Although both measures are complementary, the main advantage could rely on the fact that the measure for transfer entropy does not detect all causal effects that information flow does. so, in order to measure information transfer, the transfer entropy should only be applied to causal information sources, for a given target variable. Otherwise it will just be a measure of correlations.
+
+\pagebreak
 \section{Exercise 3}
 
-To understand better the concepts of multi-information and its decomposition, this exercise requires you to work out some details in the paper by Schneidman et al., Phys. Rev. Lett., 91, 238701, 2003 discussed in the class.
-
-\begin{tcolorbox}
-\textbf{(a)}
-For the case of three binary variables (i.e., $x_{1}, x_{2}, x_{3}$ equal to either 0 or1) with all pairwise marginals known, derive with clear steps the maximum entropy distribution in terms of the Lagrange multipliers. Hint: You do not need to solve for the Lagrange multipliers and your answer should look like Eq. 1, namely, the Ising model, in Schneidman et al., Nature, 440, 1007, 2006.
-\end{tcolorbox}
+To understand better the concepts of multi-information and its decomposition, this exercise requires you to work out some details in the paper by Schneidman et al., Phys. Rev. Lett., 91, 238701, 2003 discussed in the class.\\
+	
 
 \begin{tcolorbox}
 \textbf{(b)}
@@ -516,15 +609,113 @@ Can you derive $Eq. (8)$ of the paper and correct the typos? Hint: Use the
 Venn diagram. This exercise shows that 1) although the area-information
 correspondence of the Venn diagram does not hold in the 3-variable case, the Venn
 diagram is still useful when deriving relations between different information
-quantities; 2) mistakes exist in published papers, so always be critical in reading them.
+quantities; 2) mistakes exist in published papers, so always be critical in reading them.\\
 \end{tcolorbox}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+	\begin{scope}[blend group=soft light]
+	\fill[red!30!white]   ( 90:1.8) circle (2.5);
+	\fill[green!30!white] (210:1.8) circle (2.5);
+	\fill[blue!30!white]  (330:1.8) circle (2.5);
+	\end{scope}
+	\node at ( 90:2)    {$S(X_{1}|X_{2},X_{3})$};
+	\node at ( -35:5.5)    {$S(X_{3})$};
+	\node at ( 40:4.5)    {$S(X_{1})$};
+	\node at ( 50:-5)    {$S(X_{2})$};
+	\node at (210:2.5)    {$S(X_{2}|X_{1},X_{3})$};
+	\node at (330:2.5)    {$S(X_{3}|X_{1},X_{2})$};
+	\node(0,0) {$I_{3}$};
+	\draw(30:1.6cm) node {$I(x_{1};x_{3})-I_{3}$};
+	\draw(150:1.5cm) node {$I(x_{1};x_{2})-I_{3}$};
+	\draw(280:1.7cm) node {$I(x_{2};x_{3})-I_{3}$};
+	\end{tikzpicture}
+	\caption{Venn diagram of triplet information}
+	\label{fig:ven}
+\end{figure}
+\pagebreak
+\begin{proofw}
+	
+	From the Venn diagram in Figure($\ref{fig:ven}$) we can derive the value of $I_{3}$ as follow:
+\begin{equation}\label{entr}
+\begin{split}
+I_{3} &= S(X_{1},X_{2},X_{3}) - S(X_{1}|X_{2},X_{3}) - S(X_{2}|X_{1},X_{3})- S(X_{3}|X_{2},X_{1})\\
+& - [I(X_{1};X_{3})- I_{3}] -  [I(X_{2};X_{3})-I_{3}] - [I(X_{1};X_{2})-I_{3}]\\
+&= S(X_{1},X_{2},X_{3}) - S(X_{1}|X_{2},X_{3}) - S(X_{2}|X_{1},X_{3})- S(X_{3}|X_{2},X_{1})\\
+& - I(X_{1},X_{2}|X_{3}) - I(X_{1},X_{3}|X_{2})  - I(X_{2},X_{3}|X_{1})\\
+&= S(X_{1},X_{2},X_{3}) - [S(X_{1},X_{2},X_{3})-S(X_{2},X_{3})] - [S(X_{1},X_{2},X_{3})-S(X_{1},X_{3})] \\
+& - [S(X_{1},X_{2},X_{3})-S(X_{2},X_{1})] - I(X_{1},X_{2}|X_{3}) - I(X_{1},X_{3}|X_{2})  - I(X_{2},X_{3}|X_{1})\\
+&= S(X_{1},X_{2},X_{3}) - 3 S(X_{1},X_{2},X_{3}) +S(X_{2},X_{3}) + S(X_{1},X_{3}) + S(X_{2},X_{1}) \\
+& + 3 S(X_{1},X_{2},X_{3}) -2S(X_{2},X_{3}) -2S(X_{2},X_{1}) -2S(X_{1},X_{3}) +S(x_{1})+S(x_{2})+S(x_{3})\\
+&= S(X_{1},X_{2},X_{3}) -S(X_{2},X_{3}) - S(X_{1},X_{3}) - S(X_{1},X_{2}) + S(X_{1})+S(X_{2})+S(X_{3})\\
+&= \sum_{i}S(X_{i}) - \sum_{i<j}S(X_{i},X_{j}) + S(X_{1},X_{2},X_{3})
+\end{split}
+\end{equation}
+
+The results obtained in eq.(\ref{entr}) agree with the one derived in the first line of $eq(8)$ in the paper. I will now proceed to prove it referring to the mutual information where:
+\begin{equation*}
+\begin{split}
+\sum_{i<j}I(X_{i},X_{j}) - I(X_{1},X_{2},X_{3}) &= [I(X_{1},X_{3})+I(X_{2},X_{3})] - I(\{X_{1},X_{2}\};X_{3})
+\end{split}
+\end{equation*}
+
+We also know that:
+\begin{equation*}
+\begin{split}
+ I(\{X_{1},X_{2}\};X_{3})& = \sum_{X_{1},X_{2},X_{3}}p(X_{1},X_{2},X_{3})\log\frac{p(X_{1},X_{2},X_{3})}{p(X_{1},X_{2})p(X_{3})}\\
+ & = H(X_{3}) - H(X_{3}|X_{1},X_{2}) \\
+ & = H(X_{3}) + H(X_{1},X_{2}) - H(X_{1},X_{2},X_{3})  
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\sum_{i<j}I(X_{i},X_{j}) - I(X_{1},X_{2},X_{3}) & = [I(X_{1},X_{3})+I(X_{2},X_{3})] - [H(X_{3}) + H(X_{1},X_{2}) - H(X_{1},X_{2},X_{3}) ]\\
+&=[H(X_{1})+ H(X_{3}) - H(X_{1},X_{3})]+[H(X_{2}) + H(X_{3})\\ &-H(X_{2},X_{3})] - H(X_{3}) - H(X_{1},X_{2}) + H(X_{1},X_{2},X_{3}) \\
+&=[H(X_{1})+ H(X_{2}) + H(X_{3}) - H(X_{1},X_{3})- H(X_{2},X_{3})\\
+& - H(X_{1},X_{2}) + H(X_{1},X_{2},X_{3})\\
+&=\sum_{i}S(X_{i}) - \sum_{i<j}S(X_{i},X_{j}) + S(X_{1},X_{2},X_{3})
+\end{split}
+\end{equation*}
+
+We can now verify that:
+
+\begin{equation*}
+\sum_{i}S(X_{i}) - \sum_{i<j}S(X_{i},X_{j}) + S(X_{1},X_{2},X_{3}) = \sum_{i<j}I(X_{i},X_{j}) - I(X_{1},X_{2},X_{3})
+\end{equation*}
+
+And point out that there is an error of signs in the paper, where the right formulation is : $\sum_{i<j}I(X_{i},X_{j}) - I(X_{1},X_{2},X_{3})$ instead of $I(X_{1},X_{2},X_{3}) - \sum_{i<j}I(X_{i},X_{j})$.\\
+
+On the other hand, representing three terms entropies using the $Venn$ diagram can be misleading. Mostly as entropies can be confused with probabilties, and by the misconception that all regions correspond to positive quantities, which could be not case. (it is for a two entropy representation)
+\end{proofw}
 
 \begin{tcolorbox}
 \textbf{(c)}
 Show that the connected information of order k in $Eq. (6)$ of the paper
 can be written as a relative entropy. When does it equal to zero?
 \end{tcolorbox}
-\pagebreak
+
+The connected information of order $k$ (subset of $k$ elements of $N$ variables) is the information gain when we go from knowing only the marginals of order $k-1$ to knowing also the marginals of order $k$. It is defined as:
+\begin{proofw}
+\begin{equation*}
+{I}^{(k)}_{C}(\{x_{i}\}) = S[{\tilde{P}}^{(k-1)}(\{x_{i}\})] - S[{\tilde{P}}^{(k)}(\{x_{i}\})]
+\end{equation*}
+Considering $N$ variables $\{x_{i}\}$, where $i = 1,2,3$
+\begin{equation*}
+\begin{split}
+{I}^{(2)}_{C}(\{x_{i}\}) &= S[{\tilde{P}}^{(1)}(\{x_{i}\})] - S[{\tilde{P}}^{(2)}(\{x_{i}\})]\\
+ &= S[{\tilde{p}}^{(1)}(x_{1}, x_{2}, x_{3})] - S[{\tilde{p}}^{(2)}(x_{1}, x_{2}, x_{3})]\\
+  &= S[p(x_{1})p(x_{2})p(x_{3})] - S[p(x_{1},x_{2},x_{3})]\\ 
+  &= \sum p(x_{1},x_{2},x_{3}) \log p(x_{1},x_{2},x_{3}) - \sum p(x_{1},x_{2},x_{3}) \log p(x_{1})p(x_{2})p(x_{3})  \\ 
+  &= \sum p(x_{1},x_{2},x_{3}) \frac{\log p(x_{1},x_{2},x_{3}) }{p(x_{1})p(x_{2})p(x_{3})}\\ 
+   &= D_{KL}(p(x_{1},x_{2},x_{3})||(p(x_{1})p(x_{2})p(x_{3}))) \\ 
+  &= D_{KL}{\tilde{P}}^{(2)}(\{x_{i}\})||{\tilde{P}}^{(1)}(\{x_{i}\})) \\ 
+  &= D_{KL}({\tilde{P}}^{(k)}(\{x_{i}\})||{\tilde{P}}^{(k-1)}(\{x_{i}\})) \geq 0 \\ 
+\end{split}
+\end{equation*}
+If the result of the Kullback-Leiber divergence is zero, this means that both distributions are the same, ${\tilde{P}}^{(k)}(\{x_{i}\})$ $=$ $\tilde{P}^{(k-1)}(\{x_{i}\})$. i.e, there is independence among the variables in the model.
+\end{proofw}
 
 \section{Exercise 4}
 \begin{tcolorbox}
@@ -533,42 +724,76 @@ Plot the data points on the x-y plane to see how they look like and
 prepare the element-to-element distance matrix $d(\vec{x}_{i},\vec{x}_{j}) = \sqrt{{(x_{i}- x_{j})}^{2}+ {(y_{i}-y_{j})}^{2}}$
 $(i,j = 1,2,...,300)$ that will be the input for the clustering algorithm. Also assume each data point carries the same weight, i.e., $p(\vec{x}_{i}) = 1/300$ for all $i$.
 \end{tcolorbox}
-\begin{figure}[h]
-	\includegraphics[width=\linewidth]{scatter_plot.png}
+
+As it is already known, the data set is composed by 300 data points from which the first 100 have a different normal distribution than the remaining 200.
+
+After plotting the data points without making any difference, if we had no previous information of the data points distribution, at first glance in Figure(\ref{fig:1}) we can say that it is clear that there are two clusters. \\
+
+\begin{figure}[h!]
+	\includegraphics[width=100mm,scale=0.5]{scatter_plot.png}
+	\caption{Data set Scatter plot}
+	\label{fig:1}
 \end{figure}
 
-\begin{figure}[h]
-	\includegraphics[width=\linewidth]{scatter_plot_clusters_diff.png}
+After dividing the data set by distribution we can now verify from Figure(\ref{fig:2}) that there are indeed two clusters.\\
+
+\begin{figure}[h!]
+	\includegraphics[width=100mm,scale=0.5]{scatter_plot_clusters_diff.png}
+		\caption{Data set Scatter plot by distribution}
+	\label{fig:2}
 \end{figure}
 
-
-\pagebreak
+Unfortunately, in real applications is not always the case in which we will be aware of our data distribution. So we will work based on the fact that we do not know how our data points are distributed.
 
 \begin{tcolorbox}
 \textbf{(b)}
 Write a code (no restriction on the program language) to implement
 the Blahut-Arimoto algorithm discussed in the class to evaluate the clustering
-membership probability,, with fixed number of clusters, and compression distortion tradeoff parameter. Your code should implement a multiple run each
+membership probability,, with fixed number of clusters, and compression distortion trade-off parameter. Your code should implement a multiple run each
 starting with random initial conditions. Note: Your source code should include clear
 comments/documentations to describe what is evaluating. We may later randomly ask
 a few students, especially those without clear documentations, to demonstrate how
 their code works.
 \end{tcolorbox}
-\pagebreak
+I have created a small program for running the Blahut-Arimoto algorithm. A pdf with the code is enclosed.
+I have also included an html file with the jupyter notebook I used for testing my code.
 
 \begin{tcolorbox}
-\textbf{(c)}
+\textbf{(c), (d)}
 Run your program to construct the information curves for $N_{c}$ = 2, 3 and
 4. Hint: choose different values of $\beta$ in between 1 to 50.
 \end{tcolorbox}
-\pagebreak
 
-\begin{tcolorbox}
-\textbf{(d)}
-As we have already known that the correct number of clusters is 2,
-propose a reasonable way using the quantities evaluated from your code and the information curves to correctly identify the number of clusters. You should clearly explain your rationale and show explicitly which quantities, graphs and/or curves are used in the
-identification.
-\end{tcolorbox}
+After running the program and constructing the information curves Figure(\ref{fig:results_1}) and Figure(\ref{fig:results_2}) show some results.
+
+\begin{figure}[h!]
+	\hspace*{-1.5in}
+	\centering
+	\includegraphics[width=220mm,scale=0.5]{beta_range_50.png}
+	\caption{Information curve for $\beta$ values from 0 to 50}
+	\label{fig:results_1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\hspace*{-1.5in}
+	\includegraphics[width=220mm,scale=0.5]{beta_range_10.png}
+	\caption{Information curve for $\beta$ values from 1 to 10}
+	\label{fig:results_2}
+\end{figure}
+\pagebreak
+Form Figure(\ref{fig:results_1}) and Figure(\ref{fig:results_2}) what we are trying to achieve is to find the model that compresses the information the most, while decreasing the distortion, i.e keeping relevant our model, and preserving as much information as possible by reducing the distortion. \\
+On the x-axis we can find $\beta$, which represents the Lagrange multiplier attached to the constrained meaningful information. By changing the value of the parameter $\beta$ we can actually explore the trade-off between compression and the preserved meaningful information.\\
+
+On the y-axis we find the expected distortion rate, By decreasing the distortion we increment the relevance. The information curve will increase in both directions, and we will like to select the model in the predictive point. 
+
+
+In Figure(\ref{fig:results_2}) we can observe that for the given values of $\beta$ from zero until five there is a fixed value of distortion rate for all clusters, which in this case we will always prefer the model with smallest number of clusters. i.e, $N_{c}=2$.\\
+
+It can also be noticed in Figure(\ref{fig:results_1}) that up to certain point ($\beta=5$) each model takes a different direction, and as the number of clusters increases, the compression rate decreases and the distortion rate increases. \\
+ as $\beta \rightarrow \infty$ the distortion rate remains constant for all values of $\beta$. (starting from $\beta = 20$)
+
+We can now conclude that the best model is given using 2 clusters.
 
 
 \end{document}

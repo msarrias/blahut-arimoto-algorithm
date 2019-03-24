@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 MAR 2019 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 MAR 2019 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1580,38 +1580,87 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip56
 \dth@everypar=\toks39
 )
-(./Marina-Herrera-solutions-Exam-MT7037.aux
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-LaTeX Warning: Label `eq4' multiply defined.
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen191
+\pgffor@skip=\dimen192
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count279
+\pgfplotmarksize=\dimen193
 )
+\tikz@lastx=\dimen194
+\tikz@lasty=\dimen195
+\tikz@lastxsaved=\dimen196
+\tikz@lastysaved=\dimen197
+\tikzleveldistance=\dimen198
+\tikzsiblingdistance=\dimen199
+\tikz@figbox=\box84
+\tikz@figbox@bg=\box85
+\tikz@tempbox=\box86
+\tikz@tempbox@bg=\box87
+\tikztreelevel=\count280
+\tikznumberofchildren=\count281
+\tikznumberofcurrentchild=\count282
+\tikz@fig@count=\count283
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count284
+\pgfmatrixcurrentcolumn=\count285
+\pgf@matrix@numberofcolumns=\count286
+)
+\tikz@expandcount=\count287
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+))) (./Marina-Herrera-solutions-Exam-MT7037.aux)
 \openout1 = `Marina-Herrera-solutions-Exam-MT7037.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
- (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count279
-\scratchdimen=\dimen191
-\scratchbox=\box84
-\nofMPsegments=\count280
-\nofMParguments=\count281
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count282
-\MPscratchDim=\dimen192
-\MPnumerator=\count283
-\makeMPintoPDFobject=\count284
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count288
+\scratchdimen=\dimen256
+\scratchbox=\box88
+\nofMPsegments=\count289
+\nofMParguments=\count290
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count291
+\MPscratchDim=\dimen257
+\MPnumerator=\count292
+\makeMPintoPDFobject=\count293
+\everyMPtoPDFconversion=\toks43
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1669,139 +1718,308 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (25.15167pt too wide) in paragraph at lines 109--121
+Overfull \hbox (25.15167pt too wide) in paragraph at lines 113--125
 []$[]$ \OT1/cmr/m/n/10.95 , $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--121
+Underfull \hbox (badness 10000) in paragraph at lines 113--125
 
  []
 
 [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
+Underfull \hbox (badness 10000) in paragraph at lines 235--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
 
-Overfull \hbox (0.42444pt too wide) detected at line 268
+Overfull \hbox (0.42444pt too wide) detected at line 272
 []
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
 
-Overfull \hbox (13.13283pt too wide) detected at line 307
+Overfull \hbox (13.13283pt too wide) detected at line 311
 []
  []
 
 [7] [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 462--464
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
- []
-
-
-Overfull \hbox (76.7936pt too wide) detected at line 463
-[]
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 495--502
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 
  []
 
-[12] [13]
-<scatter_plot.png, id=64, 433.62pt x 289.08pt>
+
+Overfull \hbox (21.1401pt too wide) detected at line 508
+[]
+ []
+
+
+Overfull \hbox (89.53378pt too wide) detected at line 515
+[]
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 542--544
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 549--556
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 559--560
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--564
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 575--576
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 584--586
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 588--589
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 590--591
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 594--595
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 596--597
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 603--604
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 607--613
+
+ []
+
+[17]
+Overfull \hbox (57.93715pt too wide) detected at line 654
+[]
+ []
+
+
+Overfull \hbox (108.16092pt too wide) detected at line 680
+[]
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
+
+ []
+
+
+Overfull \hbox (30.46144pt too wide) detected at line 716
+[]
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
+
+ []
+
+<scatter_plot.png, id=86, 433.62pt x 289.08pt>
 File: scatter_plot.png Graphic file (type png)
 <use scatter_plot.png>
-Package pdftex.def Info: scatter_plot.png  used on input line 537.
-(pdftex.def)             Requested size: 360.0pt x 240.01132pt.
-<scatter_plot_clusters_diff.png, id=66, 433.62pt x 289.08pt>
+Package pdftex.def Info: scatter_plot.png  used on input line 733.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
+
+ []
+
+<scatter_plot_clusters_diff.png, id=88, 433.62pt x 289.08pt>
 File: scatter_plot_clusters_diff.png Graphic file (type png)
 <use scatter_plot_clusters_diff.png>
-Package pdftex.def Info: scatter_plot_clusters_diff.png  used on input line 541
+Package pdftex.def Info: scatter_plot_clusters_diff.png  used on input line 741
 .
-(pdftex.def)             Requested size: 360.0pt x 240.01132pt.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+[20 <./scatter_plot.png>]
+Overfull \hbox (18.86761pt too wide) in paragraph at lines 767--768
+[]\OT1/cmr/m/n/10.95 After run-ning the pro-gram and con-struct-ing the in-for-
+ma-tion curves Figure(4[])
+ []
+
+[21 <./scatter_plot_clusters_diff.png>]
+<beta_range_50.png, id=97, 1084.05pt x 361.35pt>
+File: beta_range_50.png Graphic file (type png)
+<use beta_range_50.png>
+Package pdftex.def Info: beta_range_50.png  used on input line 772.
+(pdftex.def)             Requested size: 542.02368pt x 180.67456pt.
+
+Overfull \hbox (160.0154pt too wide) in paragraph at lines 770--773
+ []|  [] 
+ []
+
+<beta_range_10.png, id=98, 1084.05pt x 361.35pt>
+File: beta_range_10.png Graphic file (type png)
+<use beta_range_10.png>
+Package pdftex.def Info: beta_range_10.png  used on input line 780.
+(pdftex.def)             Requested size: 542.02368pt x 180.67456pt.
+
+Overfull \hbox (160.0154pt too wide) in paragraph at lines 779--781
+ []|  [] 
+ []
+
+[22 <./beta_range_50.png> <./beta_range_10.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 785--787
+
+ []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 
-[14 <./scatter_plot.png>] [15 <./scatter_plot_clusters_diff.png>] [16] [17]
-(./Marina-Herrera-solutions-Exam-MT7037.aux)
+ []
 
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[23] (./Marina-Herrera-solutions-Exam-MT7037.aux) ) 
 Here is how much of TeX's memory you used:
- 21130 strings out of 492649
- 418426 string characters out of 6129622
- 450301 words of memory out of 5000000
- 24749 multiletter control sequences out of 15000+600000
- 538616 words of font info for 55 fonts, out of 8000000 for 9000
+ 23570 strings out of 492649
+ 475796 string characters out of 6129622
+ 501700 words of memory out of 5000000
+ 27142 multiletter control sequences out of 15000+600000
+ 541078 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,23n,73p,10433b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on Marina-Herrera-solutions-Exam-MT7037.pdf (17 pages, 225676 by
+ 54i,23n,73p,10433b,584s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/boondox/zxxrl8a.pfb>
+Output written on Marina-Herrera-solutions-Exam-MT7037.pdf (23 pages, 310501 by
 tes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 165 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 39 words of extra memory for PDF output out of 10000 (max. 10000000)
 
